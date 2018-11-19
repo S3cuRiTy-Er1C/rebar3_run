@@ -21,7 +21,7 @@ init(State) ->
                                 {bare, false},
                                 {deps, ?DEPS},
                                 {example, "rebar3 run"},
-                                {short_desc, "Run release console."},
+                                {short_desc, "Run release foreground."},
                                 {desc, ""},
                                 {opts, []}
                                 ]),
@@ -38,7 +38,7 @@ do(State) ->
     case lists:keyfind(release, 1, Config) of
         {release, {Name, _Vsn}, _} ->
             StartScript = filename:join([ReleaseDir, Name, "bin", Name]),
-            exec(StartScript, ["console"]),
+            exec(StartScript, ["foreground"]),
             {ok, State};
         false ->
             {error, {?MODULE, no_release}}
